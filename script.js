@@ -11,6 +11,9 @@ document.getElementById("applicationForm").addEventListener("submit", function(e
     // Send data to Discord webhook
     const webhookURL = "https://discord.com/api/webhooks/1067978852346908702/kSbKIm9bgjP68F5J0k-0HJFZvK8TY49CjsviElc9MXWBoRSUqocJyKsrUhMC_1_rBeSk";
 
+    // Disable the submit button during the fetch
+    document.querySelector('button[type="submit"]').setAttribute('disabled', 'true');
+
     fetch(webhookURL, {
         method: "POST",
         headers: {
@@ -25,7 +28,7 @@ document.getElementById("applicationForm").addEventListener("submit", function(e
                         { name: "Moderation Experience", value: formData.experience },
                         { name: "Why Moderator", value: formData.why },
                     ],
-                    color: 0x3498db, // Embed color (you can use a color picker)
+                    color: 0x3498db,
                 },
             ],
         }),
@@ -35,10 +38,16 @@ document.getElementById("applicationForm").addEventListener("submit", function(e
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         alert("Application submitted successfully!");
-        // You can redirect the user or perform other actions here
+
+        // Reset the form after successful submission
+        document.getElementById("applicationForm").reset();
     })
     .catch(error => {
         console.error("Error:", error);
         alert("Error submitting application. Please try again later.");
+    })
+    .finally(() => {
+        // Enable the submit button after the fetch (in case of an error)
+        document.querySelector('button[type="submit"]').removeAttribute('disabled');
     });
 });
