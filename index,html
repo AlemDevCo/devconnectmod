@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Moderator Application Form</title>
+</head>
+<body>
+    <div class="container">
+        <form id="applicationForm">
+            <h1>Moderator Application Form</h1>
+
+            <label for="username">Discord Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="experience">Moderation Experience:</label>
+            <textarea id="experience" name="experience" rows="4" required></textarea>
+
+            <label for="why">Why do you want to be a Moderator?</label>
+            <textarea id="why" name="why" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
